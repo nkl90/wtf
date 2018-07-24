@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>{{ question.title }}</h1>
+    <p class="answers">
+        {% for variant in question.variants %}
+            <a href="{{ path('question', {'number': currentPage + 1}) }}">{{ variant }}</a>
+        {% endfor %}
+    </p>
+{% endblock %}

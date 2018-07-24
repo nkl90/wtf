@@ -3,6 +3,9 @@ index:
     controller: App\Controller\DefaultController::index
 
 question:
-    path: /question
+    path: /question/{number}
     controller: App\Controller\DefaultController::question
 
+finish:
+    path: /finish
+    controller: App\Controller\DefaultController::finish

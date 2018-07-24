@@ -40,10 +40,6 @@ class DefaultController extends Controller
             'variants' => ['Лев', 'Лев', 'Лев', 'Лев', 'Хайрулла', 'Тот, у которого ДР', 'Директор Порнхаба'],
         ],
         [
-            'title' => 'Кто наш любимый директор:',
-            'variants' => ['Лев', 'Лев', 'Лев', 'Лев', 'Хайрулла', 'Тот, у которого ДР', 'Директор Порнхаба'],
-        ],
-        [
             'title' => 'Сколько предлагает всем с***ть Алексей в диспутной ситуации:',
             'variants' => ['300', '3', '*Стас пожимает плечами*', 'я только спросить', '8'],
         ],
@@ -103,8 +99,20 @@ class DefaultController extends Controller
         return $this->render('main.html.twig');
     }
 
-    public function question()
+    public function question($number)
     {
-        return $this->render('question.html.twig');
+        if($number >= count($this->questions) - 1){
+            return $this->redirectToRoute('finish');
+        }
+        dump(count($this->questions));
+        return $this->render('question.html.twig', [
+            'question' => $this->questions[$number],
+            'currentPage' => $number
+        ]);
+    }
+
+    public function finish()
+    {
+        return $this->render('finish.html.twig');
     }
 }
