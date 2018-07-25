@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -51,7 +52,7 @@ class DefaultController extends Controller
                 'Проебали возможность иметь в штате негра-гея',
                 'Проебали Диму',
                 'Проебали бесплатное питание',
-                'Проебали все вышеперечисленное'
+                'Все проебали'
             ],
         ],
         [
@@ -111,8 +112,10 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function finish()
+    public function finish(Request $request)
     {
+        $referer = $request->headers->get('referer');
+        //dump($referer);
         return $this->render('finish.html.twig');
     }
 }
