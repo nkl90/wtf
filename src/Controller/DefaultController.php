@@ -105,7 +105,6 @@ class DefaultController extends Controller
         if($number >= count($this->questions) - 1){
             return $this->redirectToRoute('finish');
         }
-        dump(count($this->questions));
         return $this->render('question.html.twig', [
             'question' => $this->questions[$number],
             'currentPage' => $number
@@ -114,8 +113,6 @@ class DefaultController extends Controller
 
     public function finish(Request $request)
     {
-        $referer = $request->headers->get('referer');
-        //dump($referer);
         return $this->render('finish.html.twig');
     }
 }
